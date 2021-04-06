@@ -1,0 +1,24 @@
+installer les dependance back
+composer insatll
+
+instalation de webpackencore
+composer req encore
+
+instalation des dependance front (node modules )
+npm i
+
+instalation de sass loder et le decocher dans le fichier webpack
+npm install sass-loader sass webpack --save-dev
+
+mise en place du build (ce qui va nous compiler les fichier js et css"sass" dans le dossier buid npm
+npm run build
+
+instalation de prefixer-css qui permet d'adapter le css au navigateur
+npm install postcss-loader autoprefixer --dev
+créé un dossier qui va contenir le module de configuration (postcss.config.js) voir la documentation de symfony
+
+instalation de bootstrap
+npm install bootstrap@next
+faire les import dans le fichier js et style
+
+composer update
