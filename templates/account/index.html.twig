@@ -4,5 +4,6 @@
 
 {% block body %}
 <h1>bienvenue {{ app.user.firstname }}</h1>
-    <a href="{{ path('account_password') }}">modifier mot de passe </a>
+    <a href="{{ path('account_password') }}">modifier mot de passe </a><br>
+    <a href="{{ path('account_address') }}">mes addresses </a>
 {% endblock %}

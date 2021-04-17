@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}meilleur site d'anime{% endblock %}
+
+{% block body %}
+<div class="row mt-5">
+    <div class="col-md-9 d-flex justify-content-center">
+    <video
+            id="my-video"
+            class="video-js"
+            controls
+
+
+            autoplay="true"
+            data-setup="{}"
+    >
+        <source src="{{ asset('video-anime') }}/{{ episode.link }}" type="video/mp4" />
+    </video>
+    </div>
+    <div class="col-md-3 mt-5 text-center">
+        {% for episodes in anim.episode %}
+           <div class="row"><h3> <span class="badge badge-danger">{{ episodes }}</span></h3></div>
+        {% endfor %}</div>
+</div>
+
+{% endblock %}
+{% block videojs %}
+{% endblock %}

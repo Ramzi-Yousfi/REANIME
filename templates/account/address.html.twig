@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}mes adresses{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h1 class="text-light">bienvenue {{ app.user.firstname }}</h1>
+    <a href="{{ path('account_address_add') }}" class="btn btn-primary float-right mr-4"><span class="fas fa-plus"></span></a>
+    <h3 class="text-light">vos adresses de livraison</h3>
+        {% if app.user.addresses|length ==0 %}
+            <p class="text-center mt-5 mb-5">Vous n'avez pas encore mit d'addresses </p>
+        {% else %}
+            <div class="row">
+                {% for address in app.user.addresses %}
+                    <div class="card text-center m-3" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{address.postalAddress }}</h5>
+                            <p class="card-text">{{ address.postal }} {{ address.city }} {{ address.country }}</p>
+                            <div class="float-right">
+                                <a href="{{ path('account_address_edit',{'id':address.id}) }}"><span class="fas fa-edit"></span></a>|
+                                <a href="{{ path('account_address_delete',{'id':address.id}) }}"><span class="fas fa-trash"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

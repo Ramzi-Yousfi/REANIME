@@ -1,0 +1,92 @@
+.hamburger-menu{
+  width:35px;
+  height: 30px;
+  position: fixed;
+  top: 40px;
+  right: 40px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.line{
+  width: 100%;
+  height: 3px;
+  background-color:chocolate;
+  border-radius: 20%;
+  transition: all 0.8s;
+}
+.sidebar-click .line-1{
+  transform: rotateZ(-405deg) translate(-8px ,6px);
+}
+.sidebar-click .line-2{
+  opacity: 0;
+}
+.sidebar-click .line-3{
+  transform: rotateZ(405deg) translate(-8px ,-6px);
+}
+.sidebar{
+  z-index: 20;
+  width: 300px;
+  height: 100%;
+  background-color: rgb(46, 45, 45);
+  position: fixed;
+  top: 0;
+  right: -300px;
+  display: flex;
+  justify-content: center;
+  padding-top: 5em;
+  transition: right .8s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+@media #{$medium}{
+  .sidebar{
+    width: 100%;
+    right: -1000px;
+    transition: right .12s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+}
+@media #{$small}{
+  .sidebar{
+    width: 100%;
+    right: -600px;
+  }
+}
+.sidebar-click{
+  right: 0;
+}
+.nav-list{
+  text-align:center;
+}
+.user-sidebar{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.sidebar-img{
+  overflow:hidden;
+  -webkit-border-radius:50px;
+  -moz-border-radius:50px;
+  border-radius:50px;
+  width:80px;
+  height:80px;
+}
+.account-sidebar{
+  display: flex;
+  flex-direction: column;
+  padding-left:10px ;
+}
+
+.nav-item{
+  list-style: none;
+  margin: 25px;
+}
+.nav-link{
+  text-decoration: none;
+  font-size: 22px;
+  color: aliceblue;
+  font-weight: 300;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
+
+}
