@@ -40,7 +40,7 @@
             <li class="nav-item">
                 <a href="" class="nav-link">Nous Contacter</a>
             </li>
-            <li>
+            <li style="list-style: none">
                 {% if app.user %}
                     <a href="{{ path ('account') }}"><i class="fas fa-user i"></i></a>
                     <span class="ml-1" style="color: white">{{  app.user.firstname }}</span>
