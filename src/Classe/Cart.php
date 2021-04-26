@@ -1,5 +1,5 @@
 <?php
-namespace App\classe;
+namespace App\Classe;
 
 use App\Entity\Product;
 use Doctrine\ORM\EntityManagerInterface;

@@ -22,3 +22,8 @@ npm install bootstrap@next
 faire les import dans le fichier js et style
 
 composer update
+
+
+////instalation de symfony ux charteJs
+composer require symfony/ux-chartjs
+npm install --force      ///pour installer tout nos dependances

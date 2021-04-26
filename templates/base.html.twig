@@ -12,9 +12,9 @@
 </head>
 <body>
 <header>
-    <div class="navbar" id="logo">
-    <a  href="{{ path('home') }}"><h1>
-            <span class="span1">RE</span><span class="span2">FLIX</span></h1></a>
+    <a id="logo" href="{{ path('home') }}"><h1>
+            <span class="span1">RE</span><span class="span2">FLIX</span></h1>
+    </a>
     <nav class="sidebar">
         <div class="hamburger-menu">
             <div class="line line-1"></div>
@@ -40,54 +40,22 @@
             <li class="nav-item">
                 <a href="" class="nav-link">Nous Contacter</a>
             </li>
-            <li style="list-style: none">
+            <li >
                 {% if app.user %}
                     <a href="{{ path ('account') }}"><i class="fas fa-user i"></i></a>
                     <span class="ml-1" style="color: white">{{  app.user.firstname }}</span>
-                    <a href="{{ path('cart') }}"><i class="fas fa-shopping-basket ml-3 i"></i></a>
-                    <a href="{{ path ('app_logout')}}"><i class="far fa-sign-out-alt ml-3 i"></i></a>
+                    <a href="{{ path('cart') }}"><i class="fas fa-shopping-basket ml-3 "></i></a>
+                    <a href="{{ path ('app_logout')}}"><i class="far fa-sign-out-alt ml-3 "></i></a>
                 {% else %}
-                    <a href="{{ path ('app_login')}}" class="ml-2 i">connexion  </a>
+                    <a href="{{ path ('app_login')}}" class="ml-2 ">connexion  </a>
                     <br>
-                    <a href="{{ path ('register')}}" class="ml-2 i">inscription</a>
+                    <a href="{{ path ('register')}}" class="ml-2 ">inscription</a>
                 {% endif %}
             </li>
         </ul>
     </nav>
-    </div>
+
 </header>
-   {#  <nav class="navbar navbar-expand-md  navbar-dark  " style="background-color: #3c3f41;">
-        <a class="navbar-brand " id="logo" href=""><h1>
-        <span class="span1">RE</span><span class="span2">FLIX</span></h1></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="">Boutique <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="{{ path('anime') }}">Anime <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="#">Qui somme nous ? <span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-            {% if app.user %}
-                <a href="{{ path ('account') }}"><i class="fas fa-user i"></i></a>
-                <span class="ml-1" style="color: white">{{  app.user.firstname }}</span>
-                <a href="{{ path('cart') }}"><i class="fas fa-shopping-basket ml-3 i"></i></a>
-                <a href="{{ path ('app_logout')}}"><i class="far fa-sign-out-alt ml-3 i"></i></a>
-            {% else %}
-                <a href="{{ path ('app_login')}}" class="ml-2 i">connexion  </a>
-                <br>
-                <a href="{{ path ('register')}}" class="ml-2 i">inscription</a>
-            {% endif %}
-        </div>
-    </nav>#}
     <main role="main">
 {% block body %}
 {% endblock %}

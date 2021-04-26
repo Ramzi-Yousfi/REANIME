@@ -62,6 +62,15 @@ class User implements UserInterface
      */
     private $orders;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $month;
+
+
+
+
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
@@ -245,6 +254,21 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function getMonth(): ?int
+    {
+        return $this->month;
+    }
+
+    public function setMonth(int $month): self
+    {
+        $this->month = $month;
+
+        return $this;
+    }
+
+
+
 
 
 }

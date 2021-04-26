@@ -4,7 +4,7 @@
 namespace App\Form;
 
 
-use App\classe\Search;
+use App\Classe\Search;
 
 
 use App\Entity\ProductCategory;
