@@ -1,5 +1,4 @@
 const translate = document.querySelectorAll(".translate");
-console.log(translate);
 window.addEventListener('scroll',()=>{
     let scroll = window.pageYOffset;
 

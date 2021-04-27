@@ -22,11 +22,13 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "@barba/core": "^2.9.7",
         "@popperjs/core": "^2.9.2",
         "animejs": "^3.2.1",
         "autoprefixer": "^10.2.5",
         "bootstrap": "4.6.0",
         "force": "^0.0.3",
+        "gsap": "^3.6.1",
         "jquery": "^3.6.0",
         "postcss-loader": "^5.2.0",
         "tsparticles": "^1.26.2"

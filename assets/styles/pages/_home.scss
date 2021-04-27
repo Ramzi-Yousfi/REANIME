@@ -26,9 +26,13 @@
   display: flex;
   justify-content: center;
 }
+.header-margin{
+  position: relative;
+  height: 15vh;
+  width: 100%;
+}
 .lune{
   position: absolute;
-
   z-index: 5;
 
   @media #{$large} {
@@ -134,58 +138,80 @@
 
   }
 }
+
+
+
 .section2-home {
-  height: 100vh;
-  background-color: #6c1313;
+  height: 200vh;
   position: relative;
+  div{
+    position: absolute;
+    background-image: url("https://127.0.0.1:8000///image/otro-desk.jpg");
+    background-size:cover;
+    background-attachment: fixed;
+
+    @media #{$small} {
+      background-image: url("https://127.0.0.1:8000///image/otro.jpg");
+      background-attachment: fixed;
+      background-size: cover;
+    }
+  }
 }
 .a{
-position: absolute;
-  height: 30vh;
-  width: 30%;
-  top: 0;
-  left: 0;
-  background-image: url("https://127.0.0.1:8000///image/otro.jpg");
-  background-attachment: fixed;
-  background-size: initial;
-  background-position: center;
+  height: 40vh;
+  width: 40%;
+  top: 10vh;
+  left: 5%;
 }
 .b{
-  position: absolute;
-  height: 30vh;
-  width: 30%;
-  bottom: 0;
-  left: 0;
-  background-image: url("https://127.0.0.1:8000///image/otro.jpg");
-  background-attachment: fixed;
-  background-size: cover;
+  height: 40vh;
+  width: 60%;
+  top: 40vh;
+  left: 35%;
+  box-shadow: 0px 25px 42px #7d7a7a;
+  z-index: 18;
 }
 .c{
-  position: absolute;
-  height: 30vh;
-  width: 30%;
-  bottom: 30vh;
-  left: 0;
-  background-image: url("https://127.0.0.1:8000///image/otro.jpg");
-  background-attachment: fixed;
-  background-size: cover;
+  height: 10vh;
+  width: 5%;
+  top: 80vh;
+  left: 30%;
 }
 .d{
-  position: absolute;
-  height: 30vh;
-  width: 30%;
-top: 0;
-  background-image: url("https://127.0.0.1:8000///image/otro.jpg");
-  background-attachment: fixed;
-  background-size: cover;
+  height: 20vh;
+  width: 12%;
+  top: 90vh;
+  left: 18%;
 }
 .e{
-  position: absolute;
-  height: 30vh;
-  width: 30%;
-  bottom: 30vh;
-  right: 10%;
-  background-image: url("https://127.0.0.1:8000///image/otro.jpg");
-  background-attachment: fixed;
-  background-size: cover;
+  height: 60vh;
+  width: 50%;
+  top: 110vh;
+  left: 30%;
+  box-shadow: 0px 25px 42px #7d7a7a;
+  z-index: 21;
+}
+.f{
+  height: 17vh;
+  width: 17%;
+  top: 167vh;
+  left: 70%;
+  box-shadow: 0px 25px 42px #7d7a7a;
+  z-index: 20;
+}
+.g{
+  height: 12vh;
+  width: 12%;
+  top: 179vh;
+  left: 84%;
+  box-shadow: 0px 25px 42px #7d7a7a;
+  z-index: 19;
+}
+.h{
+  height: 5vh;
+  width: 5%;
+  top: 190vh;
+  left: 94%;
+  box-shadow: 0px 25px 42px #7d7a7a;
+
 }

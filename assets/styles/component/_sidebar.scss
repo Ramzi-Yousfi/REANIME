@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  z-index: 20!important;
+  z-index: 50!important;
 
 }
 .line{
@@ -17,7 +17,7 @@
   background-color:$chocolate;
   border-radius: 20%;
   transition: all 0.8s;
-  z-index: 8;
+  z-index: 49;
 }
 .sidebar-click .line-1{
   transform: rotateZ(-405deg) translate(-8px ,6px);
@@ -33,7 +33,7 @@
   height: 100%;
   background-color: rgb(46, 45, 45);
   position: fixed;
-  z-index: 8;
+  z-index: 49;
   top: 0;
   right: -300px;
   display: flex;
@@ -55,6 +55,7 @@
 .sidebar-click{
   right: 0;
 }
+
 .nav-list{
   text-align:center;
 }

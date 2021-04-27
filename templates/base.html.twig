@@ -10,7 +10,8 @@
     {% endblock %}
 
 </head>
-<body>
+<body data-barba="wrapper">
+
 <header>
     <a id="logo" href="{{ path('home') }}"><h1>
             <span class="span1">RE</span><span class="span2">FLIX</span></h1>
@@ -23,7 +24,7 @@
         </div>
         <ul class="nav-list">
             <li class="user-sidebar ">
-                <img class="sidebar-img" src="img.jpg" alt="">
+                <img class="sidebar-img" src="" alt="">
                 <div class="account-sidebar">
                     <h2>Ramzi</h2>
                 </div>
@@ -54,13 +55,12 @@
             </li>
         </ul>
     </nav>
-
 </header>
-    <main role="main">
+    <main role="main" data-barba="container" data-barba-namespace="home">
 {% block body %}
 {% endblock %}
     </main>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}
 {% endblock %}

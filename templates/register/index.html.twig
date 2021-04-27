@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Inscription{% endblock %}
-
+{% block header %}{% endblock %}
 {% block body %}
+    <div class="header-margin"></div>
     {% if notification %}
         <div class="alert alert-success" role="alert">
             {{ notification }}
