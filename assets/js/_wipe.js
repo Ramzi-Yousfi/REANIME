@@ -1,15 +1,13 @@
 import barba from '@barba/core';
-import { gsap } from "gsap/dist/gsap";
+
 
 
 
     barba.init({
-        sync:true,
+        sync:false,
         transition:[
             {
-                async leave(){
-
-                }
+                async leave(){}
             }
         ]
     })

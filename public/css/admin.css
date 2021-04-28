@@ -14,15 +14,17 @@
     --text-color-dark: #090909;
     --fieldset-bg: #3c3c3d;
     --color-primary: #ff0303;
+
 }
 .title{
     color: white !important;
 }
-.treeview-menu{
-    --text-color: white !important;
-}
+
 .main-sidebar{
-    --text-color-dark: #7db8f3 !important;
+    --text-color-dark: #fffefe !important;
+}
+.main-sidebar li{
+    --text-color-dark: #ffffff !important;
 }
 
 .select2-results{
@@ -33,4 +35,11 @@
 }
 .table{
     background-color: #f5f5bb !important;
+}
+.sidebar-menu .header {
+  color: #e3b901 !important;
+}
+.main-header #header-logo a {
+    color:white;
+    font-size:  42px;
 }

@@ -67,6 +67,11 @@ class User implements UserInterface
      */
     private $month;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=ProfilImage::class, inversedBy="users")
+     */
+    private $ProfilImage;
+
 
 
 
@@ -263,6 +268,18 @@ class User implements UserInterface
     public function setMonth(int $month): self
     {
         $this->month = $month;
+
+        return $this;
+    }
+
+    public function getProfilImage(): ?ProfilImage
+    {
+        return $this->ProfilImage;
+    }
+
+    public function setProfilImage(?ProfilImage $ProfilImage): self
+    {
+        $this->ProfilImage = $ProfilImage;
 
         return $this;
     }

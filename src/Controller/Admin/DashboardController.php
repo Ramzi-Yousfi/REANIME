@@ -14,9 +14,12 @@ use App\Entity\User;
 use App\Entity\VideoCategory;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Menu\MenuItemTrait;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
+use http\Exception\BadHeaderException;
+use mysql_xdevapi\BaseResult;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -54,20 +57,30 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('utilisateurs', 'fas fa-user', User::class);
+        yield MenuItem::section('utilisateurs', 'fas fa-user-friends');
+        yield MenuItem::linkToCrud('édit', 'fas fa-user-edit', User::class);
+        yield MenuItem::linkToCrud('photo de profil', 'fas fa-user-cog', User::class);
 
-        yield MenuItem::subMenu('Boutique', 'fa fa-article')->setSubItems([
-         MenuItem::linkToCrud('category-produit', 'fas fa-th-large', ProductCategory::class),
-         MenuItem::linkToCrud('livraison', 'fas fa-truck', Carrier::class),
-         MenuItem::linkToCrud('produit', 'fas fa-tags', Product::class),
-         MenuItem::linkToCrud('commandes', 'fas fa-cart-plus', Order::class)
-         ]);
-        yield MenuItem::subMenu('Anime', 'fa fa-article')->setSubItems([
-         MenuItem::linkToCrud('category-anime', 'fas fa-photo-video', VideoCategory::class),
-         MenuItem::linkToCrud('genre', 'far fa-object-group', Genre::class),
-         MenuItem::linkToCrud('episode', '	fas fa-tasks', Episode::class),
-         MenuItem::linkToCrud('anime', '	fas fa-video', Anime::class),
-        ]);
+        /**
+         *  pour avoir un accordion menu !! attention ca marche pas en asynchrone !!
+         * yield MenuItem::subMenu('Boutique', 'fa fa-article')->setSubItems([ ici les sous menu   ])
+         **/
+        yield MenuItem::section('Boutique', 'fas fa-folder-open');
+        yield MenuItem::linkToCrud('category-produit', 'fas fa-th-large', ProductCategory::class);
+        yield MenuItem::linkToCrud('livraison', 'fas fa-truck', Carrier::class);
+        yield MenuItem::linkToCrud('produit', 'fas fa-tags', Product::class);
+        yield MenuItem::linkToCrud('commandes', 'fas fa-cart-plus', Order::class);
+
+
+        yield MenuItem::section('Anime', 'fas fa-caret-square-right');
+        yield MenuItem::linkToCrud('category-anime', 'fas fa-photo-video', VideoCategory::class);
+        yield MenuItem::linkToCrud('genre', 'far fa-object-group', Genre::class);
+        yield MenuItem::linkToCrud('episode', '	fas fa-tasks', Episode::class);
+        yield MenuItem::linkToCrud('anime', '	fas fa-video', Anime::class);
+
+        yield MenuItem::section('', '');
+        yield MenuItem::linkToRoute('voir le site ','	fas fa-home','home');
+
     }
     public function configureAssets(): Assets
     {

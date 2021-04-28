@@ -23,6 +23,7 @@
     },
     "dependencies": {
         "@barba/core": "^2.9.7",
+        "@fortawesome/fontawesome-free": "^5.15.3",
         "@popperjs/core": "^2.9.2",
         "animejs": "^3.2.1",
         "autoprefixer": "^10.2.5",
