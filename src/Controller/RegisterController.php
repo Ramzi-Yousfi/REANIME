@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\ProfilImage;
 use App\Entity\User;
 use App\Form\RegisterType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -17,15 +18,16 @@ use Symfony\Component\Validator\Constraints\DateTime;
 class RegisterController extends AbstractController
 {
     private $encoder;
-    private $entityManger;
-    public function __construct(EntityManagerInterface $entityManger, UserPasswordEncoderInterface $encoder)
+    private $entityManager;
+    public function __construct(EntityManagerInterface $entityManager, UserPasswordEncoderInterface $encoder)
     {
-        $this->entityManger = $entityManger;
+        $this->entityManager = $entityManager;
         $this->encoder = $encoder;
     }
     #[Route('/inscription', name: 'register')]
     public function index(Request $request)
     {
+
         date_default_timezone_set('UTC');
         $month = (int)date('m');
         $notification = null;
@@ -33,14 +35,23 @@ class RegisterController extends AbstractController
         $form = $this->createForm(RegisterType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $search_email = $this->entityManger->getRepository(User::class)->findOneByEmail($user->getEmail());
+            $search_email = $this->entityManager->getRepository(User::class)->findOneByEmail($user->getEmail());
             if(!$search_email){
+                $file = $request->files->get('register')['avatar'];
+                $uploads_directory =$this->getParameter('upload_directory');
+                $filename = md5(uniqid()).'.'.$file->guessExtension();
+                var_dump($filename);
+                $file->move(
+                    $uploads_directory,$filename
+                );
+
                 $user = $form->getData();
                 $password = $this->encoder->encodePassword($user, $user->getpassword());
                 $user->setPassword($password);
                 $user->setMonth($month);
-                $this->entityManger->persist($user);
-                $this->entityManger->flush();
+                $user->setavatar($filename);
+                $this->entityManager->persist($user);
+                $this->entityManager->flush();
                 $notification ="merci pour votre inscription !";
 
                 header( "refresh:4; /" );
@@ -50,7 +61,7 @@ class RegisterController extends AbstractController
         }
         return $this->render('register/index.html.twig', [
             'form' => $form->createView(),
-            'notification'=>$notification
+            'notification'=>$notification,
 
         ]);
 

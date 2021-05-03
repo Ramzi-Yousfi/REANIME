@@ -1,8 +1,7 @@
-import barba from '@barba/core';
+/*
 
 
-
-
+ import barba from '@barba/core';
     barba.init({
         sync:false,
         transition:[
@@ -11,3 +10,4 @@ import barba from '@barba/core';
             }
         ]
     })
+    */

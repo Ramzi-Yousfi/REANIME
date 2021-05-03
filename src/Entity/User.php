@@ -68,13 +68,9 @@ class User implements UserInterface
     private $month;
 
     /**
-     * @ORM\ManyToOne(targetEntity=ProfilImage::class, inversedBy="users")
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $ProfilImage;
-
-
-
-
+    private $avatar;
 
     public function __construct()
     {
@@ -272,17 +268,19 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getProfilImage(): ?ProfilImage
+    public function getavatar(): ?string
     {
-        return $this->ProfilImage;
+        return $this->avatar;
     }
 
-    public function setProfilImage(?ProfilImage $ProfilImage): self
+    public function setavatar(?string $avatar): self
     {
-        $this->ProfilImage = $ProfilImage;
+        $this->avatar = $avatar;
 
         return $this;
     }
+
+
 
 
 

@@ -9,5 +9,39 @@
             {{ notification }}
         </div>
     {% endif %}
-{{ form(form) }}
+
+    <div class="row">
+        <div class="col-md-6" >
+    {{ form_start(form) }}
+            <button  class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
+        <div class="col-md-6">{{ form_row(form.firstname) }}</div>
+        <div class="col-md-6">{{ form_row(form.lastname) }}</div>
+        <div class="col-md-6">{{ form_row(form.email) }}</div>
+        <div class="col-md-12">{{ form_row(form.password) }}</div>
+        <div class="col-md-6">{{ form_row(form.age) }}</div>
+        <div class="col-md-6">{{ form_row(form.avatar) }}</div>
+        <div class="col-md-12 mt-3">{{ form_row(form.envoyer ) }}</div>
+
+
+    </div>
+
+    </div>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="color: #3c3c3d">
+                <div class="container">
+                    <div class="row col-3">
+
+
+
+
+
+                        </div>
+
+
+            </div></div>  </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
 {% endblock %}

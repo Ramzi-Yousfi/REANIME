@@ -10,6 +10,7 @@ use App\Entity\Genre;
 use App\Entity\Order;
 use App\Entity\Product;
 use App\Entity\ProductCategory;
+use App\Entity\ProfilImage;
 use App\Entity\User;
 use App\Entity\VideoCategory;
 use Doctrine\ORM\EntityManagerInterface;
@@ -41,17 +42,19 @@ class DashboardController extends AbstractDashboardController
     {
         $chart = $this->dashboardCostom->getChartbuilderLine();
         $pie = $this->dashboardCostom->getChartbuilderPie();
+        $allUsers = $this->dashboardCostom->getAllUsers();
 
         return $this->render('dashboard/index.html.twig', [
          'chart'=>$chart,
-            'camanber'=>$pie
+            'camanber'=>$pie,
+            'allUsers'=>$allUsers,
         ]);
     }
 
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('REANIME');
+            ->setTitle('<img src="./image/logo.png">');
     }
 
     public function configureMenuItems(): iterable
@@ -59,7 +62,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::section('utilisateurs', 'fas fa-user-friends');
         yield MenuItem::linkToCrud('édit', 'fas fa-user-edit', User::class);
-        yield MenuItem::linkToCrud('photo de profil', 'fas fa-user-cog', User::class);
+
 
         /**
          *  pour avoir un accordion menu !! attention ca marche pas en asynchrone !!

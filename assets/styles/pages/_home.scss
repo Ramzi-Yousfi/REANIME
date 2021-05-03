@@ -1,7 +1,10 @@
 *{
   margin: 0;
   padding:0;
-  box-sizing: border-box;
+  box-sizing: border-box !important;
+}
+.form-row {
+  display: inherit !important;
 }
   body{
     background: rgb(65,64,64);
@@ -101,8 +104,8 @@
   background:linear-gradient(to top, rgba(65,64,64,1) ,transparent);
 }
 .section1-home {
-  height: 100vh;
 
+  height: 100vh;
   display: flex!important;
   align-items: center !important;
   width: 100%;

@@ -1,8 +1,19 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    {% block stripe %}{% endblock %}
+    {% block analytics %}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-8MN5JRYZG7"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-8MN5JRYZG7');
+        </script>
+    {% endblock %}
 
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <!-- CSS only -->
     <title>{% block title %}{% endblock %}</title>
     {% block stylesheets %}
@@ -13,9 +24,16 @@
 <body data-barba="wrapper">
 
 <header>
-    <a id="logo" href="{{ path('home') }}"><h1>
-            <span class="span1">RE</span><span class="span2">FLIX</span></h1>
-    </a>
+    {% if app.request.get('_route') == 'home' %}
+        <a id="logo" class="logo" href="{{ path('home') }}"><h1>
+                <span class="span1">RE</span><span class="span2">ANIME</span></h1>
+        </a>
+
+    {% else %}
+        <a id="logo" href="{{ path('home') }}"><h1>
+                <span class="span1">RE</span><span class="span2">ANIME</span></h1>
+        </a>
+    {% endif %}
     <nav class="sidebar">
         <div class="hamburger-menu">
             <div class="line line-1"></div>
@@ -23,12 +41,15 @@
             <div class="line line-3"></div>
         </div>
         <ul class="nav-list">
+            {%  if   app.user %}
             <li class="user-sidebar ">
-                <img class="sidebar-img" src="" alt="">
-                <div class="account-sidebar">
-                    <h2>Ramzi</h2>
+                <a href="{{ path ('account') }}">
+                    <img class="sidebar-img" src="./profil_photo/{{ app.user.avatar }}" alt="">
+                </a> <div class="account-sidebar">
+                    <h2>{{ app.user.firstname }}</h2>
                 </div>
             </li>
+            {% endif %}
             <li class="nav-item">
                 <a href="{{ path('home') }}" class="nav-link">Home</a>
             </li>
@@ -41,35 +62,35 @@
             <li class="nav-item">
                 <a href="" class="nav-link">Nous Contacter</a>
             </li>
-            <li >
+            <li>
                 {% if app.user %}
-                    <a href="{{ path ('account') }}"><i class="fas fa-user i"></i></a>
-                    <span class="ml-1" style="color: white">{{  app.user.firstname }}</span>
                     <a href="{{ path('cart') }}"><i class="fas fa-shopping-basket ml-3 "></i></a>
-                    <a href="{{ path ('app_logout')}}"><i class="far fa-sign-out-alt ml-3 "></i></a>
+                    <a href="{{ path ('app_logout') }}"><i class="far fa-sign-out-alt ml-3 "></i></a>
                 {% else %}
-                    <a href="{{ path ('app_login')}}" class="ml-2 ">connexion  </a>
+                    <a href="{{ path ('app_login') }}" class="ml-2 ">connexion </a>
                     <br>
-                    <a href="{{ path ('register')}}" class="ml-2 ">inscription</a>
+                    <a href="{{ path ('register') }}" class="ml-2 ">inscription</a>
                 {% endif %}
             </li>
         </ul>
     </nav>
 </header>
-    <main role="main" data-barba="container" data-barba-namespace="home">
-{% block body %}
-{% endblock %}
-    </main>
+<main role="main" data-barba="container" data-barba-namespace="home">
+    {% block body %}
+    {% endblock %}
+</main>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}
 {% endblock %}
-    {% if block('videojs') is defined  %}
-        <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
-        <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
-        <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
-    {% endif %}
+{% if block('videojs') is defined %}
+    <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet"/>
+    <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+    <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
+{% endif %}
+
+
 </body>
 </html>

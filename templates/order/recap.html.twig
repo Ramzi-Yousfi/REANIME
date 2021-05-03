@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}mes commandes {% endblock %}
+    {% block stripe %}  <script src="https://js.stripe.com/v3/"></script> {% endblock %}
 
 {% block body %}
     <div class="header-margin"></div>
 <h1>mon recap</h1>
-
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-6">
             <strong>mon address de livraison</strong> <br/>
@@ -69,5 +70,10 @@
             <a  class="btn btn-success btn-block mt-3" id="checkout-button"> payer  |  {{ ((carrier.price /100) + (total/100))|number_format(2,'.',',') }} €</a>
         </div>
     </div>
+</div>
+
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
 {% endblock %}
 

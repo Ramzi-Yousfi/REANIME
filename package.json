@@ -2,6 +2,8 @@
     "devDependencies": {
         "@symfony/stimulus-bridge": "^2.0.0",
         "@symfony/ux-chartjs": "file:vendor/symfony/ux-chartjs/Resources/assets",
+        "@symfony/ux-cropperjs": "file:vendor/symfony/ux-cropperjs/Resources/assets",
+        "@symfony/ux-dropzone": "file:vendor/symfony/ux-dropzone/Resources/assets",
         "@symfony/webpack-encore": "^1.0.0",
         "core-js": "^3.0.0",
         "regenerator-runtime": "^0.13.2",
@@ -32,6 +34,7 @@
         "gsap": "^3.6.1",
         "jquery": "^3.6.0",
         "postcss-loader": "^5.2.0",
+        "stripe": "^8.145.0",
         "tsparticles": "^1.26.2"
     }
 }

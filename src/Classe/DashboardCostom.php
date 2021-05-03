@@ -6,10 +6,11 @@ namespace App\Classe;
 
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
 use Symfony\UX\Chartjs\Model\Chart;
 
-class DashboardCostom
+class DashboardCostom extends AbstractController
 {
     private $chartbuilder;
     private $entityManager;
@@ -49,19 +50,25 @@ class DashboardCostom
         ]);
         return $chart;
     }
+    public function getAllUsers(){
+        $users = $this->entityManager->getRepository(User::class)->findAll();
+        $allUsers = count($users);
+        return $allUsers;
+    }
 
     public function getChartbuilderPie()
     {
+
         $Pie = $this->chartbuilder->createChart(Chart::TYPE_PIE);
         $Pie->setData([
-            'labels' => [1, 2, 3],
+            'labels' => ['utilisateurs Connecté','utilisateurs non Connecté' ],
             'datasets' => [
                 [
 
                     'backgroundColor' => ['#FF0000', '#FFFF00', '#FF0000'],
 
 
-                    'data' => [50, 40, 10],
+                    'data' => [50, 40],
                 ],
             ],
         ]);
