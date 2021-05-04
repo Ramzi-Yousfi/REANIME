@@ -5,12 +5,12 @@
     --body-bg: #383737;
     --text-color: #000000;
     --color-success: #11255f;
-    --content-panel-bg: #7db8f3;
+    --content-panel-bg: #e3e3e3;
     /* make the base font size smaller */
     --font-size-base: 14px;
     /* remove all border radius to make corners straight */
     --border-radius: 15px;
-    --form-bg: #7db8f3;
+    --form-bg: #97ead9;
     --text-color-dark: #090909;
     --fieldset-bg: #3c3c3d;
     --color-primary: #ff0303;

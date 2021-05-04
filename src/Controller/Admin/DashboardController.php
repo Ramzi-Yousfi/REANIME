@@ -19,8 +19,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Menu\MenuItemTrait;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
-use http\Exception\BadHeaderException;
-use mysql_xdevapi\BaseResult;
+
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -59,7 +58,10 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
+
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
+        yield MenuItem::linkToUrl('stripe ','fas fa-money-check-alt','https://dashboard.stripe.com/test/dashboard');
+        yield MenuItem::linkToUrl('Google Analytics ','	fas fa-chart-line','https://analytics.google.com/analytics/web/#/p271014670/reports/defaulthome');
         yield MenuItem::section('utilisateurs', 'fas fa-user-friends');
         yield MenuItem::linkToCrud('édit', 'fas fa-user-edit', User::class);
 
@@ -82,7 +84,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('anime', '	fas fa-video', Anime::class);
 
         yield MenuItem::section('', '');
-        yield MenuItem::linkToRoute('voir le site ','	fas fa-home','home');
+        yield MenuItem::linkToRoute('voir le site ','	far fa-eye','home');
 
     }
     public function configureAssets(): Assets

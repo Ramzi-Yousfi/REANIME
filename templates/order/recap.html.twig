@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}mes commandes {% endblock %}
-    {% block stripe %}  <script src="https://js.stripe.com/v3/"></script> {% endblock %}
+
 
 {% block body %}
     <div class="header-margin"></div>
@@ -71,9 +71,40 @@
         </div>
     </div>
 </div>
+    {% block stripe %}
+        <script src="https://js.stripe.com/v3/"></script>
+        <script type="text/javascript">
+        var _stripe = Stripe("pk_test_51Imf9aHkgexrIntIfain65CGPVLQ3oKxAG6vwVOhUpafmHTKm9rUndN7m8tuw2a5L4bNE9dCV2yhLcTcTwxagpee00WvUqlSJ6");
+        var checkoutButton = document.getElementById("checkout-button");
+        checkoutButton.addEventListener("click", function () {
+        fetch("/commande/create-session/{{reference}}", {
+        method: "POST",
+        })
+        .then(function (response) {
+        return response.json();
+        })
+        .then(function (session) {
+        if (session.error == 'order'){
+        return window.location.replace('{{ path('order') }}');
+        }else {
+        return _stripe.redirectToCheckout({ sessionId: session.id });
+        }
 
-    {% block stylesheets %}
-        {{ encore_entry_link_tags('app') }}
+        })
+        .then(function (result) {
+        // If redirectToCheckout fails due to a browser or network
+        // error, you should display the localized error message to your
+        // customer using error.message.
+        if (result.error) {
+        alert(result.error.message);
+        }
+        })
+        .catch(function (error) {
+        console.error("Error:", error);
+        });
+        });
+        </script>
     {% endblock %}
+
 {% endblock %}
 
