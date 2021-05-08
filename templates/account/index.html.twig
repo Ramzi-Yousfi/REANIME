@@ -4,8 +4,46 @@
 
 {% block body %}
     <div class="header-margin"></div>
-<h1>bienvenue {{ app.user.firstname }}</h1>
-    <a href="{{ path('account_password') }}">modifier mot de passe </a><br>
-    <a href="{{ path('account_address') }}">mes addresses </a><br>
-    <a href="{{ path('account_order') }}">mes addresses </a>
+    <h1 class="pb-5 pl-3">bienvenue {{ app.user.firstname }}</h1>
+    <div class="container ">
+
+
+        <div class="row pl-3">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-6" >
+                <a href="{{ path('account_password') }}">
+               <div class="box" >
+                   <i class='fas fa-user-lock' ></i>
+                  <h5>modifier mot de passe</h5>
+               </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-6">
+                <a href="{{ path('account_address') }}">
+                <div class="box" >
+                    <i class='	fas fa-map-marked-alt' ></i>
+                <h5>mes addresses </h5>
+                </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-6">
+                <a href="{{ path('account_order') }}">
+                <div class="box" >
+                       <i class='fas fa-dolly-flatbed' ></i>
+                      <h5>mes commandes</h5>
+                </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-6">
+                <a href="{{ path('account_order') }}">
+                <div class="box" >
+                       <i class='fas fa-user-edit' ></i>
+                      <h5>photo de profil</h5>
+                </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
 {% endblock %}

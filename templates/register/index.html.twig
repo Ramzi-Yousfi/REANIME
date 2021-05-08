@@ -1,47 +1,54 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Inscription{% endblock %}
 {% block header %}{% endblock %}
 {% block body %}
     <div class="header-margin"></div>
-    {% if notification %}
-        <div class="alert alert-success" role="alert">
-            {{ notification }}
-        </div>
-    {% endif %}
-
     <div class="row">
-        <div class="col-md-6" >
-    {{ form_start(form) }}
-            <button  class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
-        <div class="col-md-6">{{ form_row(form.firstname) }}</div>
-        <div class="col-md-6">{{ form_row(form.lastname) }}</div>
-        <div class="col-md-6">{{ form_row(form.email) }}</div>
-        <div class="col-md-12">{{ form_row(form.password) }}</div>
-        <div class="col-md-6">{{ form_row(form.age) }}</div>
-        <div class="col-md-6">{{ form_row(form.avatar) }}</div>
-        <div class="col-md-12 mt-3">{{ form_row(form.envoyer ) }}</div>
-
-
-    </div>
-
-    </div>
-
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content" style="color: #3c3c3d">
-                <div class="container">
-                    <div class="row col-3">
-
-
-
-
-
-                        </div>
-
-
-            </div></div>  </div>
+        <div class="col-lg-6">
         </div>
+        <div class="col-lg-6">
+            {% if notification %}
+                <div class="alert alert-success" role="alert">
+                    {{ notification }}
+                </div>
+            {% endif %}
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+            {{ form_start(form) }}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">{{ form_row(form.firstname) }}</div>
+                    <div class="col-md-6">{{ form_row(form.lastname) }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">{{ form_row(form.email) }}</div>
+                    <div class="col-md-12">{{ form_row(form.password) }}</div>
+                <div class="col-md-6">{{ form_row(form.age) }}</div>
+                <div class="d-flex justify-content-center align-items-center pt-3">
+                <a class="btn  btn-light " data-toggle="modal" data-target=".bd-example-modal-lg" >Large modal
+                </a>
+                </div>
+                </div>
+                <div class="col-md-12 mt-3">{{ form_row(form.envoyer ) }}</div>
+            </div>
+        </div>
+            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-lg  ">
+                    <div class="modal-content" style="color: #3c3c3d">
+                        <div class="container">
+                            <div class="row ">
+                                <div class="col-md-12">{{ form_row(form.avatar) }}</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {{ form_end(form) }}
     </div>
-    {{ form_end(form) }}
 {% endblock %}

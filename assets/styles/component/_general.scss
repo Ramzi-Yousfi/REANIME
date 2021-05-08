@@ -1,0 +1,44 @@
+*{
+  margin: 0;
+  padding:0;
+  box-sizing: border-box !important;
+}
+.form-row {
+  display: inherit !important;
+}
+
+.body-dark{
+  @include text-color($gray-900)
+}
+body{
+  @include text-color($cyan)
+}
+a{
+  text-decoration: none !important;
+}
+li{
+  list-style: none;
+}
+ul{
+  list-style: none ;
+}
+.awsome-size{
+  color: $gray-900;
+  font-size: 18px;
+  font-weight: initial;
+  @media #{$medium} {
+    font-size: 15px;
+  }
+  @media #{$small} {
+    font-size: 12px;
+  }
+}
+.awsome{
+  color: $yellow;
+}
+.awsome-color{
+  color: $cyan !important;
+}
+.awsome-side{
+  font-size:24px;
+}

@@ -1,0 +1,9 @@
+# config/packages/easy_admin.yaml
+easy_admin:
+  entities:
+    Product:
+      # ...
+      form:
+        fields:
+          - { property: 'text', type: 'fos_ckeditor',
+              type_options: { config_name: 'advanced_config' } }

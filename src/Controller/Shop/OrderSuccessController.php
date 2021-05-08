@@ -2,6 +2,8 @@
 namespace App\Controller\Shop;
 
 use App\Classe\Cart;
+use App\Classe\Mail;
+use App\Entity\MailContent;
 use App\Entity\Order;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -29,7 +31,9 @@ class OrderSuccessController extends AbstractController
             $order->setIsPaid(1);
             $cart->remove();
             $this->entityManager->flush();
-            //envoyer un mail de confirmation
+            $mail = new Mail();
+            $content ="votre commande n°".$order->getReference()."est validé<br/> merci pour votre confiance ";
+            $mail->send($order->getUser()->getEmail(),$order->getUser()->getUsername(),'Commannde REANIME ',$content);
         }
 
         return $this->render('order/success.html.twig',[

@@ -87,10 +87,16 @@ class RegisterType extends AbstractType
             ])
 
             ->add('avatar', DropzoneType::class, [
-                'attr' => ['data-controller' => 'mydropzone'],
+                'attr' => [
+                    'data-controller' => 'mydropzone',
+                    'placeholder' => 'glisser votre image ici ou
+                    cliquez ici pour la telecharger '
+                    ],
                 'label'=> 'choisir une photo de profil',
+                 'required' => false,
 
         ])
+
 
 
 

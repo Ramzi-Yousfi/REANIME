@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ news.title }}!{% endblock %}
+
+{% block body %}
+    <div class="header-margin"></div>
+    <div class="container">
+            <div class="row" >
+                <div class="col-md-4">
+                        <img class="img-fluid" src="/uploads/{{ news.illustration }}" alt="">
+                </div>
+                <div class="col-md-6">
+                            <h5>{{ news.title }}</h5>
+                     <small class="text-muted">{{ news.createdAt|date("d/m/Y") }}</small>
+                    <p>
+                        {{ news.content }}
+                    </p>
+                </div>
+            </div>
+    </div>
+
+{% endblock %}

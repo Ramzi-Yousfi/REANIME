@@ -1,6 +1,12 @@
-@import "component/_logo";
 @import "utilities/_varibles";
-@import "component/_sidebar";
+@import "utilities/_mixins";
+@import "component/_general";
 @import "pages/_home";
+@import "component/_logo";
+@import "component/_sidebar";
+@import "pages/_login";
+@import "pages/_register";
+@import "pages/_cart";
 @import "pages/_order";
+@import "pages/_anime";
 

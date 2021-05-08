@@ -7,10 +7,11 @@ use App\Entity\Anime;
 use App\Entity\Carrier;
 use App\Entity\Episode;
 use App\Entity\Genre;
+use App\Entity\MailContent;
+use App\Entity\News;
 use App\Entity\Order;
 use App\Entity\Product;
 use App\Entity\ProductCategory;
-use App\Entity\ProfilImage;
 use App\Entity\User;
 use App\Entity\VideoCategory;
 use Doctrine\ORM\EntityManagerInterface;
@@ -62,6 +63,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToUrl('stripe ','fas fa-money-check-alt','https://dashboard.stripe.com/test/dashboard');
         yield MenuItem::linkToUrl('Google Analytics ','	fas fa-chart-line','https://analytics.google.com/analytics/web/#/p271014670/reports/defaulthome');
+        yield MenuItem::linkToUrl('mailjet ','far fa-paper-plane','https://app.mailjet.com/dashboard');
         yield MenuItem::section('utilisateurs', 'fas fa-user-friends');
         yield MenuItem::linkToCrud('édit', 'fas fa-user-edit', User::class);
 
@@ -82,6 +84,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('genre', 'far fa-object-group', Genre::class);
         yield MenuItem::linkToCrud('episode', '	fas fa-tasks', Episode::class);
         yield MenuItem::linkToCrud('anime', '	fas fa-video', Anime::class);
+
+        yield MenuItem::section('News', 'fas fa-broadcast-tower');
+        yield MenuItem::linkToCrud('actualite', '	far fa-newspaper', News::class);
 
         yield MenuItem::section('', '');
         yield MenuItem::linkToRoute('voir le site ','	far fa-eye','home');

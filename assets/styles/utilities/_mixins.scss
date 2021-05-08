@@ -1,0 +1,13 @@
+@mixin text-color($font){
+  color: $white;
+  background: $font;
+  @if $font != $gray-900{
+    color: $gray-900;
+  }
+}
+@mixin home-section2-position($height,$width,$top,$left){
+  height: $height;
+  width: $width;
+  top: $top;
+  left: $left;
+}

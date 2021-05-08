@@ -19,9 +19,8 @@
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
-
 </head>
-<body data-barba="wrapper">
+<body class="body-dark"  id="body">
 
 <header>
     {% if app.request.get('_route') == 'home' %}
@@ -34,7 +33,7 @@
                 <span class="span1">RE</span><span class="span2">ANIME</span></h1>
         </a>
     {% endif %}
-    <nav class="sidebar">
+    <nav class="sidebar " >
         <div class="hamburger-menu">
             <div class="line line-1"></div>
             <div class="line line-2"></div>
@@ -60,19 +59,28 @@
                 <a href="{{ path('anime') }}" class="nav-link">Anime</a>
             </li>
             <li class="nav-item">
-                <a href="" class="nav-link">Nous Contacter</a>
+                <a href="{{ path('news') }}" class="nav-link">Actualité</a>
             </li>
-            <li>
+            <li class="nav-item">
+                <a href="{{ path('contact') }}" class="nav-link">Nous Contacter</a>
+            </li>
+            <li class="mt-5 d-flex justify-content-center">
                 {% if app.user %}
-                    <a href="{{ path('cart') }}"><i class="fas fa-shopping-basket ml-3 "></i></a>
-                    <a href="{{ path ('app_logout') }}"><i class="far fa-sign-out-alt ml-3 "></i></a>
+                    <a href="{{ path('cart') }}"><i class="fas fa-shopping-basket ml-3 awsome awsome-side"></i></a>
+                    <a href="{{ path ('app_logout') }}"><i class="far fa-sign-out-alt ml-3 awsome awsome-side"></i></a>
                 {% else %}
                     <a href="{{ path ('app_login') }}" class="ml-2 ">connexion </a>
                     <br>
                     <a href="{{ path ('register') }}" class="ml-2 ">inscription</a>
                 {% endif %}
+            </li> </ul>
+            <li id="switch">
+                <label class="switch">
+                    <input class="dark" type="checkbox">
+                    <span class="slider round"></span>
+                </label>
             </li>
-        </ul>
+
     </nav>
 </header>
 <main role="main" data-barba="container" data-barba-namespace="home">
