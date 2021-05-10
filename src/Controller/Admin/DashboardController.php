@@ -5,9 +5,9 @@ namespace App\Controller\Admin;
 use App\Classe\DashboardCostom;
 use App\Entity\Anime;
 use App\Entity\Carrier;
+use App\Entity\Comments;
 use App\Entity\Episode;
 use App\Entity\Genre;
-use App\Entity\MailContent;
 use App\Entity\News;
 use App\Entity\Order;
 use App\Entity\Product;
@@ -77,6 +77,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('livraison', 'fas fa-truck', Carrier::class);
         yield MenuItem::linkToCrud('produit', 'fas fa-tags', Product::class);
         yield MenuItem::linkToCrud('commandes', 'fas fa-cart-plus', Order::class);
+        yield MenuItem::linkToCrud('commentaires ', 'far fa-comments', Comments::class);
 
 
         yield MenuItem::section('Anime', 'fas fa-caret-square-right');

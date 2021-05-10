@@ -20,7 +20,7 @@ class NewsController extends AbstractController
     #[Route('/actualité', name: 'news')]
     public function index(): Response
     {
-        $news = $this->entiyManager->getRepository(News::class)->findAll();
+        $news = $this->entiyManager->getRepository(News::class)->findByLastNews(10);
         return $this->render('news/index.html.twig', [
            'news'=>$news
         ]);

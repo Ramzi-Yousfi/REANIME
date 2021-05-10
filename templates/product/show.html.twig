@@ -17,5 +17,49 @@
             <a href="{{ path('add_to_cart',{'id':product.id}) }}" class="btn btn-primary">ajouter au panier</a>
         </div>
     </div>
+
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-lg  ">
+                <div class="modal-content" style="color: #3c3c3d">
+                    <div class="container">
+                        <div class="row ">
+                            {% if notification %}
+                                <div class="alert alert-success" role="alert">
+                                    {{ notification }}
+                                </div>
+                            {% endif %}
+                            <div class="col-md-12">  {{ form(commentForm) }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pb-5 mt-5">
+            <div class="col-md-9">
+                <h1> les avis </h1>
+            </div>
+
+            <div class="col-md-3">
+                <a class="btn  btn-light " data-toggle="modal" data-target=".bd-example-modal-lg" >Ajouter un avis
+                </a>
+            </div>
+
+        </div>
+
+            {% for comment in product.comments %}
+                {% if comment.isPublished == 1 %}
+                <div class="row">
+                    <div class="col-md-3">
+                        {{ comment.user.lastname }}<br>  {{ comment.createdAt|date("d/m/Y") }}
+                    </div>
+                    <div class="col-md-9">
+                        {{ comment.content|raw}}
+                    </div>
+                    <HR ALIGN=CENTER WIDTH="100%">
+                </div>
+                {% endif %}
+            {% endfor %}
+
     </div>
 {% endblock %}
