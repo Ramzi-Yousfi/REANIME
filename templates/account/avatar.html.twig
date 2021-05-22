@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ma photo de profil{% endblock %}
+
+{% block body %}
+    <div class="header-margin"></div>
+    <div class="container">
+        {% if notification %}
+            <div class="alert alert-success" role="alert">
+                {{ notification }}
+            </div>
+        {% endif %}
+        <div class="pt-5 text-center">
+            {{ form(form) }}
+        </div>
+        <a href="{{ path('account') }}" class="btn btn-danger">retour</a>
+    </div>
+{% endblock %}

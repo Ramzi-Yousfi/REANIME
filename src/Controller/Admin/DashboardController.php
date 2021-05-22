@@ -2,12 +2,13 @@
 
 namespace App\Controller\Admin;
 
-use App\Classe\DashboardCostom;
+use App\Classe\DashboardCustom;
 use App\Entity\Anime;
 use App\Entity\Carrier;
 use App\Entity\Comments;
 use App\Entity\Episode;
 use App\Entity\Genre;
+use App\Entity\Home;
 use App\Entity\News;
 use App\Entity\Order;
 use App\Entity\Product;
@@ -28,25 +29,25 @@ use Symfony\Component\Routing\Annotation\Route;
 class DashboardController extends AbstractDashboardController
 {
     private $entityManger;
-    private $dashboardCostom;
-    public function __construct(EntityManagerInterface $entityManger ,DashboardCostom $dashboardCostom)
+    private $dashboardCustom;
+    public function __construct(EntityManagerInterface $entityManger , DashboardCustom $dashboardCustom)
     {
         $this->entityManger = $entityManger;
-        $this->dashboardCostom = $dashboardCostom;
+        $this->dashboardCustom = $dashboardCustom;
     }
-
     /**
      * @Route("/admin", name="admin")
      */
     public function index(): Response
     {
-        $chart = $this->dashboardCostom->getChartbuilderLine();
-        $pie = $this->dashboardCostom->getChartbuilderPie();
-        $allUsers = $this->dashboardCostom->getAllUsers();
-
+        $chart = $this->dashboardCustom->getChartbuilderLine();
+        $pie = $this->dashboardCustom->getChartbuilderPie();
+        $Bar = $this->dashboardCustom->getChartbuilderBar();
+        $allUsers = $this->dashboardCustom->getAllUsers();
         return $this->render('dashboard/index.html.twig', [
-         'chart'=>$chart,
+            'chart'=>$chart,
             'camanber'=>$pie,
+            'bar'=>$Bar,
             'allUsers'=>$allUsers,
         ]);
     }
@@ -64,8 +65,10 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToUrl('stripe ','fas fa-money-check-alt','https://dashboard.stripe.com/test/dashboard');
         yield MenuItem::linkToUrl('Google Analytics ','	fas fa-chart-line','https://analytics.google.com/analytics/web/#/p271014670/reports/defaulthome');
         yield MenuItem::linkToUrl('mailjet ','far fa-paper-plane','https://app.mailjet.com/dashboard');
+        yield MenuItem::linkToCrud('Page Accueil', 'fas fa-user-edit', Home::class);
         yield MenuItem::section('utilisateurs', 'fas fa-user-friends');
         yield MenuItem::linkToCrud('édit', 'fas fa-user-edit', User::class);
+        ;
 
 
         /**

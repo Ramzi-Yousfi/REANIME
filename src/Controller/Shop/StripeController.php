@@ -28,7 +28,7 @@ class StripeController extends AbstractController
 
 
         foreach ($order->getOrderDetails()->getValues() as $product){
-            $product_object = $entityManager->getRepository(Product::class)->findOneByName($product->getProduct());
+            $product_object = $entityManager->getRepository(Product::class)->findOneBySlug($product->getProduct());
             $products_for_stripe[]=[
                 'price_data' => [
                     'currency' => 'eur',

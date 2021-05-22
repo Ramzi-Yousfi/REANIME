@@ -1,13 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}commande non reussie {% endblock %}
-
-{% block content  %}
-    <h1 class="mb-4">confirmation de  votre commande </h1>
-    <div class="alert alert-danger mt-5" role="alert" >
-        <h4 class="alert-heading ">Echec!</h4>
-        <p>une erreur c'est produite veiller réessayer ou verifier votre solvabilité  </p>
-        <hr>
-        <a class="btn btn-dark" href="{{ path('order') }}">réessayer</a>
+{% block title %}commande non reussie {% endblock %}
+{% block body %}
+    <div class="header-margin"></div>
+    <div class="container">
+        <div class="d-flex align-items-center justify-content-center pb-2">
+            <img src="/image/cancel.png" alt="" style="width: 30vh">
+        </div>
+        <div class="alert alert-danger mt-5" role="alert" >
+            <h4 class="alert-heading ">Echec!</h4>
+            <p>une erreur c'est produite veiller réessayer ou merci de verifier votre solvabilité  </p>
+            <hr>
+            <a class="btn btn-dark" href="{{ path('order') }}">réessayer</a>
+        </div>
     </div>
 {% endblock %}

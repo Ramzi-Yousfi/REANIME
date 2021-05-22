@@ -1,17 +1,20 @@
 <?php
+
 namespace App\Classe;
 
 use App\Entity\Product;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-class Cart{
+class Cart
+{
     private $session;
     private $entityManager;
-    public function __construct(SessionInterface $session,EntityManagerInterface $entityManager)
+
+    public function __construct(SessionInterface $session, EntityManagerInterface $entityManager)
     {
         $this->session = $session;
-        $this->entityManager =$entityManager;
+        $this->entityManager = $entityManager;
     }
 
     public function add($id)
@@ -52,24 +55,35 @@ class Cart{
         }
         return $this->session->set('cart', $cart);
     }
-    public function getFull(){
-        $cartComplete = [];
-        if($this->get()){
-            foreach ($this->get() as $id=> $quantity){
 
-                $product_object= $this->entityManager->getRepository(Product::class)->findOneById($id);
-                if(!$product_object){
-                    $this->delete($id);
-                    continue;
-                }
-                $cartComplete[] = [
-                    'product'=> $product_object,
-                    'quantity'=>$quantity,
-                ];
+    public function getFull()
+    {
+        $cart = $this->get();
+        $cartComplete = [];
+        if ($this->get()) {
+            foreach ($cart as $id => $quantity) {
+
+                $product_object = $this->entityManager->getRepository(Product::class)->findOneById($id);
+                if ($product_object){
+                    if ($product_object->getStock() > 0) {
+                        if ($quantity > $product_object->getStock()) {
+                            $quantity = $product_object->getStock();
+                            $cart[$id] =$quantity;
+                           $this->session->set('cart', $cart);
+                        }
+                    }
+            }else{
+                $this->delete($id);
+                continue;
             }
+            $cartComplete[] = [
+                'product' => $product_object,
+                'quantity' => $quantity,
+            ];
         }
-        return $cartComplete;
     }
+return $cartComplete;
+}
 
 
 }

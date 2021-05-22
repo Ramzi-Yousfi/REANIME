@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block title %}Réinitialiser mon mot de passe{% endblock %}
+{% block header %}{% endblock %}
+{% block body %}
+    <div class="header-margin"></div>
+{% if app.flashes('notice') %}
+    {% for message in app.flashes('notice') %}
+        <div class="alert-danger container p-3 text-center message-reset">
+            <h5>{{ message }}</h5>
+        </div>
+    {% endfor %}
+{% endif %}
+    <div class="login text-center">
+        <div class="form-signin">
+            <h1>Réinitialiser mon mot de passe </h1>
+             {{ form(form) }}
+            <div class="mb-2 text-center " style="color: #DDDDDD">
+                <a class="btn btn-sm btn-outline-dark" href="{{ path('app_login') }}">connexion</a>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

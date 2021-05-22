@@ -4,13 +4,14 @@
 namespace App\Classe;
 
 
+use App\Entity\Product;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
 use Symfony\UX\Chartjs\Model\Chart;
 
-class DashboardCostom extends AbstractController
+class DashboardCustom extends AbstractController
 {
     private $chartbuilder;
     private $entityManager;
@@ -73,5 +74,26 @@ class DashboardCostom extends AbstractController
             ],
         ]);
         return $Pie;
+    }
+    public function getChartbuilderBar()
+    {
+        $stock = [];
+        $name = [];
+        $stocks = $this->entityManager->getRepository(Product::class)->findAllByStock(2);
+        foreach ($stocks as $s){
+            $stock[] = $s->getStock();
+            $name[] = $s->getName();
+        }
+        $Bar = $this->chartbuilder->createChart(Chart::TYPE_BAR);
+        $Bar->setData([
+            'labels' => $name,
+            'datasets' => [
+                [
+                    'backgroundColor' => ['#FF0000', '#FFFF00', '#FF0000'],
+                    'data' => $stock,
+                ],
+            ],
+        ]);
+        return $Bar;
     }
 }

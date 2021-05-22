@@ -1,15 +1,35 @@
 // import Swiper JS
-import Swiper from 'swiper';
+import SwiperCore, { Navigation, Pagination, Scrollbar,Autoplay } from 'swiper/core';
+// Install modules
+SwiperCore.use([Navigation, Pagination, Scrollbar,Autoplay]);
 // import Swiper styles
 import 'swiper/swiper-bundle.css';
-var swiper = new Swiper(".mySwiper", {
-    slidesPerView: 3,
-    spaceBetween: 30,
-    slidesPerGroup: 3,
+import Swiper from "swiper/core";
+const swiper = new Swiper(".mySwiper", {
+    slidesPerView: 2,
+    spaceBetween: 10,
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+    },
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
     loop: true,
     loopFillGroupWithBlank: true,
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
+    breakpoints: {
+        640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+        },
+        768: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+        },
+        1024: {
+            slidesPerView: 4,
+            spaceBetween: 30,
+        },
     },
 });

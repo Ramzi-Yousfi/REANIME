@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block title %}mot de passe oublié{% endblock %}
+{% block header %}{% endblock %}
+{% block body %}
+
+    <div class="header-margin"></div>
+    {% for message in app.flashes('notice') %}
+        <div class="alert-danger container p-3 text-center message-reset">
+           <h5>{{ message }}</h5>
+        </div>
+    {% endfor %}
+    {% if notification %}
+        <div class="alert-info container p-3 text-center message-reset">
+            <h5>{{ notification }}</h5>
+        </div>
+    {% endif %}
+    <div class="login text-center">
+        <form method="post" class="form-signin">
+            <h2><label for="inputEmail"> Votre Email</label></h2>
+            <input type="email" value="" name="email" id="inputEmail" class="form-control" required autofocus>
+            <button class=" btn btn-info mt-3 mb-3" type="submit">
+                Réinitialiser mot de passe
+            </button>
+            <br>
+            <div class="mb-2 text-center " style="color: #DDDDDD">
+                <a class="btn btn-sm btn-outline-dark" href="{{ path('app_login') }}">connexion</a>
+            </div>
+        </form>
+
+    </div>
+
+{% endblock %}

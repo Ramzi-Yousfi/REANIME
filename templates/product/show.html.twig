@@ -39,25 +39,29 @@
             <div class="col-md-9">
                 <h1> les avis </h1>
             </div>
-
             <div class="col-md-3">
                 <a class="btn  btn-light " data-toggle="modal" data-target=".bd-example-modal-lg" >Ajouter un avis
                 </a>
             </div>
-
         </div>
-
             {% for comment in product.comments %}
                 {% if comment.isPublished == 1 %}
+                {% if comment.isDelete == 0 %}
                 <div class="row">
                     <div class="col-md-3">
                         {{ comment.user.lastname }}<br>  {{ comment.createdAt|date("d/m/Y") }}
                     </div>
-                    <div class="col-md-9">
-                        {{ comment.content|raw}}
+                    <div class="col-md-9 ">
+                            {{ comment.content|raw}}
+                        <div class="float-right">
+                            {% if comment.user == app.user %}
+                            <a href="{{ path('product-slug-delete',{'slug':comment.product.slug,'id':comment.id}) }}" style="color: red">X</a>
+                        {% endif %}
+                        </div>
                     </div>
                     <HR ALIGN=CENTER WIDTH="100%">
                 </div>
+                     {% endif %}
                 {% endif %}
             {% endfor %}
 

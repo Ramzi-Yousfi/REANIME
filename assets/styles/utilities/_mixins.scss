@@ -11,3 +11,18 @@
   top: $top;
   left: $left;
 }
+
+@mixin home-section2-p{
+  @media #{$small} {
+    font-size: 14px;
+    -webkit-text-stroke-width: 0.5px;
+  }
+  @media #{$medium} {
+    font-size: 20px;
+    -webkit-text-stroke-width: 1.2px;
+  }
+  @media #{$large} {
+    font-size: 25px;
+    -webkit-text-stroke-width: 2px;
+  }
+}

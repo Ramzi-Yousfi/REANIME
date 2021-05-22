@@ -34,6 +34,7 @@
         "gsap": "^3.6.1",
         "jquery": "^3.6.0",
         "postcss-loader": "^5.2.0",
+        "simplebar": "^5.3.3",
         "stripe": "^8.145.0",
         "swiper": "^6.5.9",
         "tsparticles": "^1.26.2"

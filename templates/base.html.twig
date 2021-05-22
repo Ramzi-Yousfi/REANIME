@@ -24,8 +24,8 @@
 
 <header>
     {% if app.request.get('_route') == 'home' %}
-        <a id="logo" class="logo" href="{{ path('home') }}"><h1>
-                <span class="span1">RE</span><span class="span2">ANIME</span></h1>
+        <a id="logo" class="logo" href="{{ path('home') }}">
+                <span class="span1">RE</span><span class="span2">ANIME</span>
         </a>
 
     {% else %}
@@ -40,7 +40,7 @@
             <div class="line line-3"></div>
         </div>
         <ul class="nav-list">
-            {%  if   app.user %}
+            {%  if app.user %}
             <li class="user-sidebar ">
                 <a href="{{ path ('account') }}">
                     <img class="sidebar-img" src="./profil_photo/{{ app.user.avatar }}" alt="">
@@ -64,14 +64,19 @@
             <li class="nav-item">
                 <a href="{{ path('contact') }}" class="nav-link">Nous Contacter</a>
             </li>
-            <li class="mt-5 d-flex justify-content-center">
+            <li class="mt-1 d-flex justify-content-center">
                 {% if app.user %}
                     <a href="{{ path('cart') }}"><i class="fas fa-shopping-basket ml-3 awsome awsome-side"></i></a>
                     <a href="{{ path ('app_logout') }}"><i class="far fa-sign-out-alt ml-3 awsome awsome-side"></i></a>
                 {% else %}
-                    <a href="{{ path ('app_login') }}" class="ml-2 ">connexion </a>
-                    <br>
-                    <a href="{{ path ('register') }}" class="ml-2 ">inscription</a>
+                    <div class="col">
+                        <div class=" text-center pb-4 pt-2">
+                            <a href="{{ path ('register') }}" class="ml-2 " style="color: white">inscription</a>  <a href="{{ path ('app_login') }}" class="ml-2 btn btn-success">connexion  </a>
+                        </div>
+                        <div class="text-center pt-4">
+                            <a href="{{ path('cart') }}"><i class="fas fa-shopping-basket ml-3 awsome awsome-side"></i></a>
+                        </div>
+                    </div>
                 {% endif %}
             </li> </ul>
             <li id="switch">
@@ -87,8 +92,11 @@
     {% block body %}
     {% endblock %}
 </main>
-
-
+<footer>
+    <div class="footer">
+       REANIME  YOUSFI Ramzi ©
+    </div>
+</footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}

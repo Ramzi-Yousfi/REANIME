@@ -3,6 +3,7 @@ namespace App\Controller\Shop;
 
 use App\Classe\Cart;
 use App\Classe\Mail;
+use App\Classe\Stock;
 use App\Entity\MailContent;
 use App\Entity\Order;
 use Doctrine\ORM\EntityManagerInterface;
@@ -19,7 +20,7 @@ class OrderSuccessController extends AbstractController
     }
 
     #[Route('/commande/success/{stripeSessionId}', name: 'order_success')]
-    public function index(Cart $cart, $stripeSessionId): Response
+    public function index(Cart $cart, $stripeSessionId ,Stock $stock): Response
     {
         $order = $this->entityManager->getRepository(Order::class)->findOneByStripeSessionId($stripeSessionId);
 
@@ -29,13 +30,13 @@ class OrderSuccessController extends AbstractController
         //  header( "refresh:5;url=http://127.0.0.1:8000/" );
         if (!$order->getIsPaid()){
             $order->setIsPaid(1);
+            $stock->destock($order);
             $cart->remove();
             $this->entityManager->flush();
             $mail = new Mail();
             $content ="votre commande n°".$order->getReference()."est validé<br/> merci pour votre confiance ";
             $mail->send($order->getUser()->getEmail(),$order->getUser()->getUsername(),'Commannde REANIME ',$content);
         }
-
         return $this->render('order/success.html.twig',[
             'order'=>$order
         ]);

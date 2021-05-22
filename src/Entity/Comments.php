@@ -45,6 +45,11 @@ class Comments
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isDelete;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -106,6 +111,18 @@ class Comments
     public function setUser(?user $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getIsDelete(): ?bool
+    {
+        return $this->isDelete;
+    }
+
+    public function setIsDelete(?bool $isDelete): self
+    {
+        $this->isDelete = $isDelete;
 
         return $this;
     }

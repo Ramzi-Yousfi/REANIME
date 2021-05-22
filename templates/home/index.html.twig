@@ -12,16 +12,15 @@
 <section class="section1-home  ">
   <div class=" container">
     <div class="row" >
+        {% for h in home  %}
         <div class="col-md-6 img1  " >
-            <img class="selection1-home-img"  src="./image/hh.jpg" alt="">
+            <img class="selection1-home-img"  src="./image/{{ h.section1Image }}" alt="">
        </div>
         <div class="col-md-6 ">
             <div class="selection1-home-text parallel text-left">
-                <span>titre</span>
+                <span>{{ h.section1Titre }}</span>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Ab alias beatae, earum ex incidunt ipsam, nam nemo, ratione repellendus saepe sequi temporibus
-                    ut voluptatum? Accusantium architecto debitis quam ratione veritatis.
+                    {{ h.section1Text }}
                 </p>
             </div>
         </div>
@@ -29,34 +28,29 @@
     </div>
 
 </section>
-<section class="section2-home ">
+<section class="section2-home mb-5 ">
     <div class="a section2-home-anim"></div>
-    <div class="b section2-home-anim"></div>
+    <div class="b section2-home-anim container"><h2>{{ h.section2Titre }}</h2><p>{{ h.section2Text1 }}</p></div>
     <div class="c section2-home-anim"></div>
     <div class="d section2-home-anim"></div>
-    <div class="e section2-home-anim"></div>
+    <div class="e section2-home-anim container"><div class="container"><p>{{ h.section2Text2 }}</p></div></div>
     <div class="f section2-home-anim"></div>
     <div class="g section2-home-anim"></div>
     <div class="h section2-home-anim"></div>
 </section>
-    <div>
+    {% endfor %}
+    <div class="pl-4 pt-1 pb-5"> <h2>Nouveauté Produit</h2></div>
+    <div class="pt-3">
+
         <div class="swiper-container mySwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">Slide 1</div>
-                <div class="swiper-slide">Slide 2</div>
-                <div class="swiper-slide">Slide 3</div>
-                <div class="swiper-slide">Slide 4</div>
-                <div class="swiper-slide">Slide 5</div>
-                <div class="swiper-slide">Slide 6</div>
-                <div class="swiper-slide">Slide 7</div>
-                <div class="swiper-slide">Slide 8</div>
-                <div class="swiper-slide">Slide 9</div>
+                {% for slide in slider %}
+                <div class="swiper-slide"> <a href="{{ path('product-slug',{'slug':slide.slug }) }}"><img src="/uploads/{{ slide.illustration }}" alt="" class="img-fluid"></a></div>
+                {% endfor %}
             </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
         </div>
     </div>
-
+     <div class="mt-5"></div>
 {% endblock %}
 
 

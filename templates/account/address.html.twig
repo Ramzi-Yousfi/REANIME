@@ -13,18 +13,19 @@
         {% else %}
             <div class="row">
                 {% for address in app.user.addresses %}
-                    <div class="card text-center m-3" style="width: 18rem;">
+                    <div class="card text-center m-3 text-color-static" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title">{{address.postalAddress }}</h5>
                             <p class="card-text">{{ address.postal }} {{ address.city }} {{ address.country }}</p>
-                            <div class="float-right">
-                                <a href="{{ path('account_address_edit',{'id':address.id}) }}"><span class="fas fa-edit"></span></a>|
-                                <a href="{{ path('account_address_delete',{'id':address.id}) }}"><span class="fas fa-trash"></span></a>
+                            <div class="float-right ">
+                                <a href="{{ path('account_address_edit',{'id':address.id}) }}"><span class="fas fa-edit awsome-color"></span></a>|
+                                <a href="{{ path('account_address_delete',{'id':address.id}) }}"><span class="fas fa-trash awsome-color"></span></a>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
             </div>
         {% endif %}
+        <a href="{{ path('account') }}" class="btn btn-danger">retour</a>
     </div>
 {% endblock %}

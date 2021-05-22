@@ -4,26 +4,25 @@
 
 {% block body %}
     <div class="header-margin"></div>
-<div class="row mt-5">
-    <div class="col-lg-8 col-md-9 pb-5 d-flex justify-content-center">
-    <video
-            id="my-video"
-            class="video-js"
-            controls
-
-
-            autoplay="true"
-            data-setup="{}"
-    >
-        <source src="{{ asset('video-anime') }}/{{ episode.link }}" type="video/mp4" />
-    </video>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-lg-8 col-md-9 pb-5 d-flex justify-content-center">
+        <video
+                id="my-video"
+                class="video-js"
+                controls
+                autoplay="true"
+                data-setup="{}"
+        >
+            <source src="{{ asset('video-anime') }}/{{ episode.link }}" type="video/mp4" />
+        </video>
+        </div>
+        <div class="col-lg-4 col-md-3 d-flex align-items-center flex-column">
+            {% for episodes in anim.episode %}
+               <div class="row pb-1"><h3> <span class="badge badge-danger"> <a class="text-decoration-none " href="{{ path('view',{'slug':anim.slug,'number':episode.number }) }}">{{ episodes }}</a></span></h3></div>
+            {% endfor %}</div>
     </div>
-    <div class="col-lg-4 col-md-3 d-flex align-items-center flex-column">
-        {% for episodes in anim.episode %}
-           <div class="row pb-1"><h3> <span class="badge badge-danger"> <a class="text-decoration-none " href="{{ path('view',{'slug':anim.slug,'number':episode.number }) }}">{{ episodes }}</a></span></h3></div>
-        {% endfor %}</div>
 </div>
-
 {% endblock %}
 {% block videojs %}
 {% endblock %}

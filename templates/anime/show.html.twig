@@ -4,30 +4,26 @@
 
 {% block body %}
     <div class="header-margin"></div>
-<div class="row featurette mt-4">
-    <div class="col-md-5  d-flex justify-content-center">
-        <img src="/uploads/{{ anim.photo }}" alt="" height="400em">
-    </div>
-    <div class="col-md-7 mt-3">
-        <h1 class="text-light">{{ anim.name }}</h1>
-        <h6 class="featurette-heading"> <span class="text-muted"> {{ anim.description }} </span></h6>
-        <span class="badge badge-light">{{ anim.category }}</span>
-        {% for genre in anim.genre %}
-            <span class="badge badge-success">{{ genre }}</span>
-        {% endfor%}
-        <div class="mt-4">
-            {% for episode in anim.episode %}
-                <h4 ><span class="badge badge-danger">
-                    <a class="text-decoration-none text-light" href="{{ path('view',{'slug':anim.slug,'number':episode.number }) }}">{{ episode }}</a>
-                </span></h4>
-            {% endfor%}
+    <div class="container">
+        <div class="row featurette mt-4">
+            <div class="col-md-5  d-flex justify-content-center">
+                <img src="/uploads/{{ anim.photo }}" alt="" height="400em">
+            </div>
+            <div class="col-md-7 mt-3">
+                <h1 class="text-light">{{ anim.name }}</h1>
+                <h6 class="featurette-heading"> <span class="text-muted"> {{ anim.description }} </span></h6>
+                <span class="badge badge-light">{{ anim.category }}</span>
+                {% for genre in anim.genre %}
+                    <span class="badge badge-success">{{ genre }}</span>
+                {% endfor%}
+                <div class="mt-4">
+                    {% for episode in anim.episode %}
+                        <h4 ><span class="badge badge-danger">
+                            <a class="text-decoration-none text-light" href="{{ path('view',{'slug':anim.slug,'number':episode.number }) }}">{{ episode }}</a>
+                        </span></h4>
+                    {% endfor%}
+                </div>
+            </div>
         </div>
     </div>
-</div>
-
-
-
-
-
-
 {% endblock %}

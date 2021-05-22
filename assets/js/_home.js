@@ -18,7 +18,6 @@ window.addEventListener('scroll',()=>{
         let speed = element.dataset.speed;
         element.style.transform = `translateY(${scroll * speed}px)`;
     })
-
     function changeImage()
     {
         if(scroll >= 200){
@@ -30,7 +29,6 @@ window.addEventListener('scroll',()=>{
         }
     }
     changeImage();
-
 })
 window.addEventListener('load',()=>{
  gsap.from(logo1, { duration: 5,ease:'bounce.out',x:-200 });

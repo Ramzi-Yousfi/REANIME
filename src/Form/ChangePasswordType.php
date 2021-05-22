@@ -62,7 +62,9 @@ class ChangePasswordType extends AbstractType
                 'disabled'=>true,
                 'label' => ' Mon nom',
             ])
-            ->add('envoyer', SubmitType::class)
+            ->add('envoyer', SubmitType::class,[
+                'label'=>'Mettre à jour',
+            ])
         ;
     }
 

@@ -3,6 +3,8 @@
 {% block title %}Ma commande{% endblock %}
 
 {% block body %}
+<div class="header-margin"></div>
+<div class="container">
     <h1>Ma commande  {{ order.reference }}</h1>
     <strong>Commande passée le :</strong>{{ order.createdAt|date('d/m/Y') }}<br>
     <strong>Reference :</strong><small>{{ order.reference }}</small><br>
@@ -10,7 +12,7 @@
     <hr>
     <strong>Details</strong>
 
-    <table class="table mt-4">
+    <table class="table mt-4 table-account">
         <thead>
         <tr>
             <th scope="col">Produit</th>
@@ -35,5 +37,6 @@
         <strong>Livraison :</strong>{{ (order.carrierPrice /100)|number_format(2,'.',',')}} € <br>
         <strong>Total :</strong>{{ ((order.carrierPrice + order.getTotal)/100)|number_format(2,'.',',')}} €<br>
     </div>
-    <a href="{{ path('account') }}">retour</a>
+    <a href="{{ path('account_order') }}" class="btn btn-danger">retour</a>
+</div>
 {% endblock %}

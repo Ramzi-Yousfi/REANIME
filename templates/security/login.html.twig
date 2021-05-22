@@ -3,6 +3,13 @@
 {% block header %}{% endblock %}
 {% block body %}
     <div class="header-margin"></div>
+    <div class="container">
+        {% for message in app.flashes('alert') %}
+            <div class="alert-success container p-3 text-center message-reset">
+                <h5>{{ message }}</h5>
+            </div>
+        {% endfor %}
+    </div>
     <div class="login text-center">
 <form method="post" class="form-signin">
     {% if error %}
@@ -30,9 +37,22 @@
             </label>
         </div>
     #}
-    <button class=" btn btn-info" type="submit">
-       me conneter
-    </button>
+     <div class="pl-3 pr-3">
+         <button class=" btn btn-block btn-success " type="submit">
+             me conneter
+         </button>
+         <br>
+         <div class="d-flex text-center">
+             <a href="{{ path('register') }}" class=" btn btn-sm btn-info mr-2 " >
+                 s'inscrire
+             </a>
+             <a href="{{ path('reset_password') }}" class=" btn btn-sm btn-outline-danger float-right" >
+                 mot de passe oublier
+             </a>
+         </div>
+
+     </div>
+
 </form>
 </div>
     <br>
