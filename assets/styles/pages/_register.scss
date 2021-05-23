@@ -42,12 +42,38 @@
     margin-top: 80px;
   }
 }
+.form-register{
+  padding-top: 20vh;
+}
+.scarlets{
+  z-index: -5;
+  padding-left: -50%;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  overflow: hidden;
+  height: 100vh;
+}
 .scarlet1{
-    position: absolute;
+position: absolute;
+  height: 90vh;
     -webkit-animation:spin 4s linear infinite;
     -moz-animation:spin 4s linear infinite;
     animation:spin 25s linear infinite;
   @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
   @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
   @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+}
+.scarlet2{
+  position: absolute;
+
+  height: 30vh;
+  -webkit-animation:spin2 4s linear infinite;
+  -moz-animation:spin2 4s linear infinite;
+  animation:spin2 25s linear infinite;
+  @-moz-keyframes spin2 { 100% { -moz-transform: rotate(-360deg); } }
+  @-webkit-keyframes spin2 { 100% { -webkit-transform: rotate(-360deg); } }
+  @keyframes spin2 { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
 }
