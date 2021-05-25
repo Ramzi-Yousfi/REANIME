@@ -1,0 +1,10 @@
+.products{
+  border: 2px solid $red2;
+  padding: -7px;
+  border-radius: 3%;
+  overflow: hidden;
+
+}
+.products:hover{
+box-shadow: $red2 0px 5px 15px;
+}

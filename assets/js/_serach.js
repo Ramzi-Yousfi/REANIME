@@ -7,7 +7,7 @@ const  search = document.querySelector(".search");
 const  close = document.querySelector(".close-search");
 
 let chemin = document.location.pathname;
-if (chemin === '/anime' || chemin === '//produit' ){
+if (chemin === '/anime' || chemin === '/produit' ){
     searchBtn.addEventListener('click',()=>{
         search.classList.add('search-click');
 

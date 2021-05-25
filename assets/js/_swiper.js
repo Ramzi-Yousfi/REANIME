@@ -8,9 +8,10 @@ import Swiper from "swiper/core";
 const swiper = new Swiper(".mySwiper", {
     slidesPerView: 2,
     spaceBetween: 10,
-    autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
+        centeredSlides: true,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: true,
     },
     pagination: {
         el: ".swiper-pagination",
@@ -28,7 +29,7 @@ const swiper = new Swiper(".mySwiper", {
             spaceBetween: 20,
         },
         1024: {
-            slidesPerView: 4,
+            slidesPerView: 5,
             spaceBetween: 30,
         },
     },
