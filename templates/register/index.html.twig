@@ -8,7 +8,8 @@
         <img class="scarlet2" src="./image/scarlet2.png" alt="">
     </div>
     <div class="form-register">
-        {% if notification %}
+        <div class="container">
+            {% if notification %}
             <div class="alert alert-success" role="alert">
                 {{ notification }}
             </div>
@@ -19,7 +20,7 @@
             </div>
         {% endif %}
         {{ form_start(form) }}
-        <div class="container">
+
             <div class="row">
                 <div class="col-md-6">{{ form_row(form.firstname) }}</div>
                 <div class="col-md-6">{{ form_row(form.lastname) }}</div>

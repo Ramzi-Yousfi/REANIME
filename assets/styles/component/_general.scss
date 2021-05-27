@@ -50,12 +50,14 @@ ul{
   font-size:24px;
 }
 .footer{
-  position: absolute;
-  bottom: 0;
+  position:relative;
   margin-top: 10vh;
   width: 100%;
-
+  display: flex;
+  justify-content: center;
 }
 .footer-div{
-  text-align: center !important;
+  position:absolute;
+  bottom:0;
+  color: $chocolate;
 }

@@ -79,7 +79,7 @@ class DashboardCustom extends AbstractController
     {
         $stock = [];
         $name = [];
-        $stocks = $this->entityManager->getRepository(Product::class)->findAllByStock(2);
+        $stocks = $this->entityManager->getRepository(Product::class)->findAllByStock(12);
         foreach ($stocks as $s){
             $stock[] = $s->getStock();
             $name[] = $s->getName();
@@ -89,7 +89,8 @@ class DashboardCustom extends AbstractController
             'labels' => $name,
             'datasets' => [
                 [
-                    'backgroundColor' => ['#FF0000', '#FFFF00', '#FF0000'],
+                    'backgroundColor' => ['#FF0000', '#896a6a', '#a31d4d','#00bb00','#255782','#dec82d','#a02dde','#1da393'
+                    ,'#1b1c1c','#345234','#adcd10','#cd7210'],
                     'data' => $stock,
                 ],
             ],
