@@ -3,7 +3,7 @@
 {% block title %}anime details {% endblock %}
 
 {% block body %}
-    <img src="/uploads/{{ anim.photo }}" alt="" class="anime-show">
+    <img src="/uploads_anime_image/{{ anim.photo }}" alt="" class="anime-show">
     <div class="header-margin"></div>
     <div class="container ">
         <div class="row featurette mt-4">
@@ -21,10 +21,17 @@
                 <div class="mt-4">
                     {% for episode in anim.episode %}
                         <h4 ><span class="badge badge-danger">
-                            <a class="text-decoration-none text-light" href="{{ path('view',{'slug':anim.slug,'number':episode.number }) }}">{{ episode }}</a>
+                            <a class="text-decoration-none text-light" href="{{ path('view',{'slug':anim.slug,'number':episode.number }) }}">
+                                {% if anim.category == "serie" %}
+                                    {{ episode }}
+                                    {% else %}
+                                    voir
+                                {% endif %}
+                            </a>
                         </span></h4>
                     {% endfor%}
                 </div>
+
             </div>
         </div>
     </div>
