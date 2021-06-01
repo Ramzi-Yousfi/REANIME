@@ -17,8 +17,8 @@ class StripeController extends AbstractController
 {
     #[Route('/commande/create-session/{reference}', name: 'stripe_create_session')]
     public function index(EntityManagerInterface $entityManager, Cart $cart ,$reference): Response
-    {     $YOUR_DOMAIN = 'https://127.0.0.1:8000';
-        //TODO change the domain name before prod
+    {     $YOUR_DOMAIN = 'https://reanime.online';
+
         $products_for_stripe=[];
 
         $order = $entityManager->getRepository(Order::class)->findOneByReference($reference);

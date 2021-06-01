@@ -20,7 +20,6 @@
             </div>
         {% endif %}
         {{ form_start(form) }}
-
             <div class="row">
                 <div class="col-md-6">{{ form_row(form.firstname) }}</div>
                 <div class="col-md-6">{{ form_row(form.lastname) }}</div>
@@ -30,7 +29,7 @@
                 <div class="col-md-12">{{ form_row(form.password) }}</div>
                 <div class="col-md-6">{{ form_row(form.age) }}</div>
                 <div class="d-flex justify-content-center align-items-center pt-3">
-                    <a class="btn  btn-light " data-toggle="modal" data-target=".bd-example-modal-lg">Large modal
+                    <a class="btn  btn-light " data-toggle="modal" data-target=".bd-example-modal-lg">Avatar
                     </a>
                 </div>
             </div>
@@ -38,14 +37,16 @@
         </div>
     </div>
 
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    <div class="modal fade bd-example-modal-lg" data-bs-toggle="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-lg  ">
             <div class="modal-content" style="color: #3c3c3d">
                 <div class="container">
                     <div class="row ">
                         <div class="col-md-12">{{ form_row(form.avatar) }}</div>
-
+                        <div class="modal-footer" style="width: 100%">
+                            <button type="button" data-bs-dismiss="modal" class="btn btn-sm float-right btn-outline-success pr-3 pl-3">Ok</button>
+                        </div>
                     </div>
                 </div>
             </div>

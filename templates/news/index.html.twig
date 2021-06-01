@@ -7,18 +7,20 @@
     <div class="container mt-5">
         <div class="row mb-2">
             {% for new in news %}
-                <div class="col col-md-12">
-                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                        <div class="col p-4 d-flex flex-column position-static">
-                            <h3 class="mb-0">{{ new.title }}</h3>
-                            <div class="mb-1 text-muted">{{ new.createdAt|date("d/m/Y") }}</div>
+                <div class="col col-md-12 ">
+                    <div class="articles row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                        <div class="col-md-8 p-4 d-flex flex-column position-static">
+                            <h3 >{{ new.title }}</h3>
+                            <div class="article mt-3">
+                              {{ new.content }}
+                            </div>
+                            <div class=" text-info">{{ new.createdAt|date("d/m/Y") }}</div>
                             <br>
-
                             <a href="{{ path('news-view',{'title':new.title }) }}" type="button"
-                               class="btn  btn-secondary" style="width: 30%">voir</a>
+                               class="btn btn-sm btn-success" style="width: 30%">Lire la suite</a>
                         </div>
-                        <div class="col-auto d-none d-lg-block">
-                            <img class="img-fluid" style="height: 30vh ;width: auto"
+                        <div class="col-4 d-none d-lg-block ">
+                            <img class="img-fluid float-right" style="height: 30vh ;width: auto"
                                  src="/uploads/{{ new.illustration }}" alt="">
                         </div>
                     </div>

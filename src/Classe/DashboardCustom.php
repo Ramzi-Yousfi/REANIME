@@ -4,8 +4,11 @@
 namespace App\Classe;
 
 
+use App\Entity\Anime;
 use App\Entity\Product;
 use App\Entity\User;
+use App\Entity\VideoCategory;
+use App\Repository\AnimeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
@@ -59,17 +62,25 @@ class DashboardCustom extends AbstractController
 
     public function getChartbuilderPie()
     {
+        $serie = $this->entityManager->getRepository(VideoCategory::class)->findByCat('serie');
+        foreach ($serie as $s){
+         $series = count($s->getAnimes());
+        }
+        $film = $this->entityManager->getRepository(VideoCategory::class)->findByCat('film');
+        foreach ($film as $f){
+         $films = count($f->getAnimes());
+        }
 
         $Pie = $this->chartbuilder->createChart(Chart::TYPE_PIE);
         $Pie->setData([
-            'labels' => ['utilisateurs Connecté','utilisateurs non Connecté' ],
+            'labels' => ['Films','Series' ],
             'datasets' => [
                 [
 
-                    'backgroundColor' => ['#FF0000', '#FFFF00', '#FF0000'],
+                    'backgroundColor' => ['#dec82d' ,'#255782' ],
 
 
-                    'data' => [50, 40],
+                    'data' => [$films, $series],
                 ],
             ],
         ]);
@@ -89,6 +100,7 @@ class DashboardCustom extends AbstractController
             'labels' => $name,
             'datasets' => [
                 [
+                    'label' => 'le stock le plus bas ',
                     'backgroundColor' => ['#FF0000', '#896a6a', '#a31d4d','#00bb00','#255782','#dec82d','#a02dde','#1da393'
                     ,'#1b1c1c','#345234','#adcd10','#cd7210'],
                     'data' => $stock,
